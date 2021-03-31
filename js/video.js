@@ -17,27 +17,17 @@ document.querySelector("#slider").addEventListener("click", function() {
 	document.querySelector("#volume").innerHTML=slider+"%";
 });
 
-
-
-
-
-
-if (video.muted == true) {
-	// console.log(video.muted);
-	document.querySelector('#mute').addEventListener("click", function() {
-		console.log("Unmute Video");
-		video.muted = false;
-		document.querySelector("#mute").innerHTML="Mute";
-})};
-
-if (video.muted == false) {
-	document.querySelector('#mute').addEventListener("click", function() {
+document.querySelector('#mute').addEventListener("click", function() {
+	if (video.muted == false) {
 		console.log("Mute Video");
 		video.muted = true;
 		document.querySelector("#mute").innerHTML="Unmute";
-		console.log(video.muted);
-})};
-
+	} else {
+		console.log("Unmute Video");
+		video.muted = false;
+		document.querySelector("#mute").innerHTML="Mute";
+	}
+});
 
 document.querySelector('#pause').addEventListener("click", function() {
 	console.log("Pause Video");
@@ -64,4 +54,14 @@ document.querySelector('#faster').addEventListener("click", function() {
 	console.log("Speed Up");
 	video.playbackRate /= .95;
 	console.log(video.playbackRate);
+});
+
+document.querySelector('#skip').addEventListener("click", function() {
+	console.log("Skip Ahead");
+	video.currentTime += 15;
+	console.log(video.currentTime);
+	if (video.ended == true) {
+		video.currentTime = 0;
+		video.play();
+	}
 });
