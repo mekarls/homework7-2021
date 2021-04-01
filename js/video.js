@@ -56,13 +56,29 @@ document.querySelector('#faster').addEventListener("click", function() {
 	console.log(video.playbackRate);
 });
 
+
+
+
+
+
+
+
+
+
+
 document.querySelector('#skip').addEventListener("click", function() {
-	video.loop = true;
-	console.log("Skip Ahead");
-	video.currentTime += 15;
-	console.log(video.currentTime);
+	// video.loop = true;
+	// console.log("Skip Ahead");
+	// video.currentTime += 15;
+	// console.log(video.currentTime);
 	// if (video.ended == true) {
 	// 	video.currentTime = 0;
 	// 	video.play();
-	
+	if (video.currentTime < (video.duration-15)) {
+		console.log("Skip Ahead");
+		video.currentTime += 15;
+	} else {
+		video.currentTime = 0;
+		console.log(video.currentTime);
+	}
 });
